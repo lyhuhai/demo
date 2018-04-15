@@ -1,0 +1,82 @@
+@charset "utrf-8";
+
+/*页面公共样式*/
+body{
+    width:10rem;
+    margin:auto;
+    font-size: 0.4rem;
+    background-color: #f2f2f2;
+}
+.form-horizontal .form-group{
+    background-color: #fff;
+    margin: 0;
+    padding:6px 3.2%;
+}
+.form-horizontal .form-group>.line{
+    overflow: hidden;
+    border-bottom:1px solid #cccccc;
+    padding:4px;
+}
+.form-group label{
+    line-height: 1rem;
+}
+.form-horizontal input,.form-horizontal select{
+    font-size:0.4rem;
+    height: 1rem;
+    line-height: 1rem;
+    border: 0px;
+}
+.form-horizontal .price{
+    margin:0.13333333333333333rem 0px 0.26666666666666666rem 0px ;
+
+}
+.form-horizontal .boxRight{
+        margin-bottom:0.26666666666666666rem;
+}
+.form-horizontal .list,.form-horizontal .list input{
+    text-align: center;
+}
+.form-horizontal .list div+div{
+    border-left:1px solid #cccccc;
+}
+.telInfo{
+    color: #f33333;
+    line-height: 1rem;
+    font-size:0.32rem;
+}
+#check{
+    overflow: hidden;
+    line-height: 1rem;
+    height: 2.453333333333333rem;
+}
+.form-horizontal .control-label{
+    padding-top: 0;
+    text-align: center;
+}
+input[type="checkbox"]{
+    width: 0.4rem;
+    height: 0.4rem;
+    margin-top: 0.3rem;
+}
+.form-horizontal .tel{
+    padding-right:0;
+}
+.form-horizontal textarea{
+    width: 100%;
+    height: 2.6666666666666665rem;
+    line-height:1rem;
+    font-size:0.4rem;
+    outline:none;
+    border:0;
+}
+#submit{
+    position: relative;
+    width: 100%;
+    background: #ffe700;
+    height: 1.3333333333333333rem;
+    line-height: 1.3333333333333333rem;
+    font-weight: bold;;
+}
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+    padding:0;
+}

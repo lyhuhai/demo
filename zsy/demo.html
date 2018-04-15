@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../zsy/css/reset.css">
+    <style>
+        body{
+            background-color: #f2f2f2;
+        }
+        .body{
+            width: 750px;
+            background-color: #f2f2f2;
+            margin: auto;
+        }
+        .box{
+            padding:0px 24px;
+            background-color: #FFFFFF;
+            height: 1000px;
+        }
+        .box>*{
+            float: left;
+            font-size:30px;
+        }
+        .box input{
+            float: right;
+            background-color: #f00;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="body">
+        <div class="box">
+            <lable for="inputTitle">标题:</lable>
+            <input type="text" class="inp" id="inputTitle" placeholder="请输入标题">
+        </div>
+    </div>
+    <script>
+        $(function(){
+            console.log($(".inp").prev().width());
+            console.log($(".inp").parent().width());
+            $(".inp").width($(".inp").parent().width()-$(".inp").prev().width()*1.2)
+        })
+    </script>
+</body>
+</html>

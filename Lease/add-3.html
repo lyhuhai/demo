@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布账号</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="../zsy/bootstrap/css/bootstrap.min.css">
+
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="../zsy/bootstrap/script/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="../zsy/bootstrap/script/bootstrap.min.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="../zsy/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../zsy/script/app.js"></script>
+    <script src="../zsy/script/lease.js"></script>
+    <link rel="stylesheet" href="../zsy/css/reset.css">
+    <link rel="stylesheet" href="../zsy/css/lease.css">
+</head>
+<body>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <!--<label class="control-label">请选择游戏类别:</label>-->
+            <div class="line">
+                <?php
+                     $info_biaoqian = info_biaoqian();
+               ?>
+                <select class="form-control col-sm-12" name="info_biaoqian_id" id="games">
+                    <volist name="info_biaoqian" id="vo"  >
+                        <option value="">请选择游戏类别</option>
+                        <option value="{$vo.id}">{$vo.title}</option>
+                    </volist>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="line">
+                <label for="inputTitle" class="col-sm-2 col-xs-2 control-label">标题:</label>
+                <div class="col-sm-10 col-xs-10">
+                    <input type="text" class="form-control" id="inputTitle" placeholder="请输入标题(限20字以内)" maxlength="60">
+                </div>
+            </div>
+        </div>
+        <div class="form-group list">
+            <div class="line">
+                <div class="col-sm-6 col-xs-6">
+                    <strong>时间(小时)：</strong><span style="color:#999;">请输入时间</span>
+                </div>
+                <div class="col-sm-6 col-xs-6">
+                    <strong>价格(元)：</strong><span style="color:#999;">请输入价格</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group list">
+            <div class="line">
+                <div class="col-sm-6 col-xs-6">
+                    <input type="number" name="price_list_count[]" placeholder="请输入时间"  class="inputTime" value="1">
+                </div>
+                <div class="col-sm-6 col-xs-6">
+                    <input type="text" name="price_list_price[]" placeholder="请输入价格"  class="inputMoney" value="10">
+                </div>
+            </div>
+        </div>
+        <div class="form-group list">
+            <div class="line">
+                <div class="col-sm-6 col-xs-6">
+                    <input type="number" name="price_list_count[]" placeholder="请输入时间"  class="inputTime" value="3">
+                </div>
+                <div class="col-sm-6 col-xs-6">
+                    <input type="text" name="price_list_price[]" placeholder="请输入价格"  class="inputMoney" value="25">
+                </div>
+            </div>
+        </div>
+        <div class="form-group list">
+            <div class="line">
+                <div class="col-sm-6 col-xs-6">
+                    <input type="number" name="price_list_count[]" placeholder="请输入时间"  class="inputTime" value="6">
+                </div>
+                <div class="col-sm-6 col-xs-6">
+                    <input type="text" name="price_list_price[]" placeholder="请输入价格"  class="inputMoney" value="55">
+                </div>
+            </div>
+        </div>
+        <div class="form-group list">
+            <div class="line">
+                <div class="col-sm-6 col-xs-6">
+                    <input type="number" name="price_list_count[]" placeholder="请输入时间"  class="inputTime" value="24">
+                </div>
+                <div class="col-sm-6 col-xs-6">
+                    <input type="text" name="price_list_price[]" placeholder="请输入价格"  class="inputMoney" value="100">
+                </div>
+            </div>
+        </div>
+        <div class="form-group price">
+            <label for="inputPrice" class="col-sm-4 col-xs-4 control-label">包夜价格(元):</label>
+            <div class="col-sm-8   col-xs-8">
+                <input type="text" class="form-control" id="inputPrice" placeholder="请输入包夜价格">
+            </div>
+        </div>
+        <div class="form-group boxRight">
+            <label for="textarea" class="col-sm-3 col-xs-3 control-label">商品详情:</label>
+            <div class="col-sm-9 col-xs-9">
+                <textarea class="form-control" id="textarea" name="textarea" rows="3" placeholder="请填写文字详情(50字以内)" maxlength="100"></textarea>
+            </div>
+
+        </div>
+
+
+        <div  class="form-group boxRight">
+            <strong>上传缩略图（最大10M 单张上传）：</strong>
+            <ul class="upload-ul clearfix"  style="padding: 100px;">
+                <li class="upload-pick">
+                    <div class="webuploader-container clearfix" id="goodsUpload"></div>
+                </li>
+            </ul>
+        </div>
+        <div  class="form-group boxRight">
+            <strong>上传详情图（最大10M 多张上传）：</strong>
+            <ul class="upload-ul clearfix"  style="padding: 100px;">
+                <li class="upload-pick">
+                    <div class="webuploader-container clearfix" id="goodsUploads"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label for="account" class="col-sm-2  col-xs-2 control-label">账号:</label>
+            <div class="col-sm-10  col-xs-10">
+                <input type="text" class="form-control" id="account" placeholder="请输入账号">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2  col-xs-2 control-label">密码:</label>
+            <div class="col-sm-10  col-xs-10">
+                <input type="text" class="form-control" id="inputPassword3" placeholder="请输入密码">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputTel3" class="col-md-2  col-xs-2 control-label tel">手机号:</label>
+            <div class="col-sm-4  col-xs-5">
+                <input type="tel" class="form-control" id="inputTel3" placeholder="请输入你的手机号" maxlength="11">
+            </div>
+            <div class="col-sm-6  col-xs-5">
+                <span class="telInfo">(出现问题平台联系您使用)</span>
+            </div>
+        </div>
+        <div id="check">
+            <div class="col-sm-11 col-xs-11 col-sm-offset-1 col-xs-offset-1">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkBox">&nbsp;&nbsp;我已阅读并同意<span style="color: #f00;">《租手游服务协议》</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <input type="submit" id="submit" value="发布">
+    </form>
+    <!--<script>-->
+        <!--$(function(){-->
+
+            <!--//上传图片-->
+            <!--var $tgaUpload = $('#goodsUpload').diyUpload({-->
+                <!--url:"{:U('Lease/addd')}",-->
+                <!--success:function( data ) {-->
+
+                    <!--$("#my-app").append("<input type='hidden' name='thumb_id' value='" + data+ "'>");-->
+<!--//                alert(data)-->
+
+                <!--},-->
+                <!--auto:true,-->
+                <!--error:function( err ) { },-->
+                <!--buttonText : '',-->
+                <!--fileNumLimit:1,-->
+                <!--accept: {-->
+                    <!--title: "Images",-->
+                    <!--extensions: 'gif,jpg,jpeg,bmp,png'-->
+                <!--},-->
+
+                <!--thumb:{-->
+                    <!--width:120,-->
+                    <!--height:90,-->
+                    <!--quality:100,-->
+                    <!--allowMagnify:true,-->
+                    <!--crop:true,-->
+                    <!--type:"image/jpeg",-->
+                    <!--compressSize: 2048-->
+                <!--}-->
+            <!--});-->
+
+            <!--//上传多张图片-->
+            <!--var $tgaUpload = $('#goodsUploads').diyUpload({-->
+                <!--url:"{:U('Lease/addd')}",-->
+                <!--success:function( data ) {-->
+
+                    <!--$("#my-app").append("<input checked='checked' id='chenkpic' type='checkbox' name='pic_ids_json[]' value='" + data+ "'>");-->
+<!--//                alert(data)-->
+                <!--},-->
+                <!--auto:true,-->
+                <!--fileNumLimit:2,-->
+                <!--error:function( err ) { },-->
+                <!--buttonText : '',-->
+                <!--accept: {-->
+                    <!--title: "Images",-->
+                    <!--extensions: 'gif,jpg,jpeg,bmp,png'-->
+                <!--},-->
+
+                <!--thumb:{-->
+                    <!--width:120,-->
+                    <!--height:90,-->
+                    <!--quality:100,-->
+                    <!--allowMagnify:true,-->
+                    <!--crop:true,-->
+                    <!--type:"image/jpeg",-->
+                    <!--compressSize: 2048-->
+                <!--}-->
+            <!--});-->
+        <!--});-->
+    <!--</script>-->
+</body>
+</html>

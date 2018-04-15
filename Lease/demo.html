@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>发布账号</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../zsy/bootstrap/css/bootstrap.min.css">
+	<script src="../zsy/bootstrap/js/jquery.min.js"></script>
+	<script src="../zsy/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../zsy/bootstrap/css/bootstrap-multiselect.css">
+	<script src="../zsy/bootstrap/js/bootstrap-multiselect.js"></script>
+
+	<script src="../zsy/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../zsy/script/app.js"></script>
+    <script src="../zsy/script/lease.js"></script>
+    <link rel="stylesheet" href="../zsy/css/reset.css">
+    <link rel="stylesheet" href="../zsy/css/lease1.css">
+</head>
+<body>
+<form action="__SELF__" method="post" class="form-horizontal" role="form">
+	<div class="box">
+        <div class="form-group">
+            <!--<label class="control-label">请选择游戏类别:</label>-->
+            <?php
+                     $info_biaoqian = info_biaoqian();
+               ?>
+            <select class="form-control col-sm-12" name="info_biaoqian_id" id="games">
+                <volist name="info_biaoqian" id="vo"  >
+                    <option value="">请选择游戏类别</option>
+                    <option value="{$vo.id}">{$vo.title}</option>
+                </volist>
+            </select>   
+			<script type="text/javascript">
+				$('#games').multiselect();
+			</script> 
+        </div>
+		<div class="form-group">
+			<label for="title" class="col-xs-2 col-sm-2">标题：</label>
+			<div class="col-xs-10 col-sm-10">
+				<input type="text" class="form-control" id="title" name="title" placeholder="请输入标题">
+			</div>
+		</div>
+		<div class="form-group" id="titleInfo">提示：禁止带有联系方式、价格、QQ号、外挂、红包、返现、辱骂字样、发现审核删除货架并给与记录！</div>
+		<div class="form-group list">
+            <div class="col-sm-6 col-xs-6">
+                <strong>时间(小时)</strong>
+                <span style="color:#999;">整小时</span>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <strong>价格(元)</strong>
+                <span style="color:#999;">人民币</span>
+            </div>
+        </div>
+		 <div class="form-group list">
+            <div class="col-sm-6 col-xs-6">
+                <input type="text" name="price_list_count[]" placeholder="请输入时间"  class="inputTime" value="1">
+                <span>小时</span>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <input type="text" name="price_list_price[]" placeholder="请输入价格"  class="inputMoney" value="10.00">
+                <span>元</span>
+            </div>
+        </div>
+        <div class="form-group list">
+            <div class="col-sm-6 col-xs-6">
+                <input type="text" name="price_list_count[]" placeholder="请输入时间"  class="inputTime" value="3">
+                <span>小时</span>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <input type="text" name="price_list_price[]" placeholder="请输入价格"  class="inputMoney" value="25.00">
+                <span>元</span>
+            </div>
+        </div>
+        <div class="form-group list">
+            <div class="col-sm-6 col-xs-6">
+                <input type="text" name="price_list_count[]" placeholder="请输入时间"  class="inputTime" value="6">
+                <span>小时</span>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <input type="text" name="price_list_price[]" placeholder="请输入价格"  class="inputMoney" value="55.00">
+                <span>元</span>
+            </div>
+        </div>
+        <div class="form-group list">
+            <div class="col-sm-6 col-xs-6">
+                <input type="text" name="price_list_count[]" placeholder="请输入时间"  class="inputTime" value="24">
+                <span>小时</span>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <input type="text" name="price_list_price[]" placeholder="请输入价格"  class="inputMoney" value="100.00">
+                <span>元</span>
+            </div>
+        </div>
+	</div>
+	<div class="box">
+		<div class="form-group">
+			<label for="packPrice" class="col-xs-3 col-sm-3">包夜价格：</label>
+			<div class="col-xs-9 col-sm-9">
+				<input type="text" id="price_night" name="price_night" placeholder="请输入包夜价格">
+				<span>元</span>
+			</div>
+		</div>
+	</div>
+	<div class="box">
+		<div class="form-group">
+			<label for="details" class="col-xs-3 col-sm-3">商品详情：</label>
+			<div class="col-xs-9 col-sm-9">
+				<textarea class="form-control" id="details" name="textarea" cols="30" placeholder="商品详情:如装备、英雄、皮肤、时装等" maxlength="100"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="box">
+		<div  class="form-group">
+	        <strong>上传缩略图（最大10M 单张上传）：</strong>
+	        <ul class="upload-ul clearfix">
+	            <li class="upload-pick">
+	                <div class="webuploader-container clearfix" id="goodsUpload"></div>
+	            </li>
+	        </ul>
+	    </div>
+	</div>
+	<div class="box">
+		<div  class="form-group">
+	        <strong>上传详情图（最大10M 多张上传）：</strong>
+	        <ul class="upload-ul clearfix">
+	            <li class="upload-pick">
+	                <div class="webuploader-container clearfix" id="goodsUploads"></div>
+	            </li>
+	            <!-- 模拟添加的图片 -->
+	            <img src="" alt="">
+	            <img src="" alt="">
+	            <img src="" alt="">
+	        </ul>
+	    </div>
+	</div>
+	<div class="box">
+		<div class="form-group">
+			<label for="account" class="col-xs-2 col-sm-2">账号：</label>
+			<div class="col-xs-10 col-sm-10">
+				<input type="text" class="form-control" id="account" name="zh"  placeholder="请输入账号">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="passWord" class="col-xs-2 col-sm-2">密码：</label>
+			<div class="col-xs-10 col-sm-10">
+				<input type="text" class="form-control" id="passWord" name="pwd" placeholder="请输入密码">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="phone" class="col-md-2  col-xs-2 tel">手机号:</label>
+            <div class="col-sm-5  col-xs-5">
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="请输入你的手机号" maxlength="11">
+            </div>
+            <div class="col-sm-5  col-xs-5 telInfo">(出现问题平台联系您使用)</div>
+		</div>
+	</div>
+	<div id="checkBox">
+		<div class="col-xs-offset-1 col-sm-offset-1 infoBox">
+			<label>
+		        <input type="checkbox" >&nbsp;&nbsp;我已阅读并同意
+		    </label>
+		    <span style="color: #f00;">《租手游服务协议》</span>
+		</div>
+	</div>
+	<input type="submit" id="submit" value="发布">
+</form>
+</body>
+</html>
